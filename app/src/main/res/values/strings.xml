@@ -2,6 +2,8 @@
     <string name="app_name">Popular Movie Apps</string>
     <string name="api_key">69292009f880792c30f93ceb1ae0e166</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_def">Title     :</string>
+    <string name="released_def">Released  :</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

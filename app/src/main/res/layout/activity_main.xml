@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.poni.popularmovieapps.MainActivity">
 
+
+    <ProgressBar
+        style="@style/GenericProgressIndicator"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_horizontal|top"
+        android:visibility="visible"/>
+
     <GridView
+        android:id="@+id/previewLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/previewLayout"/>
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp" />
 
-</LinearLayout>
+
+</FrameLayout>
