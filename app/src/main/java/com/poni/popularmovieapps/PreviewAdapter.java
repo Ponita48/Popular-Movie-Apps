@@ -44,8 +44,11 @@ public class PreviewAdapter extends BaseAdapter {
         ImageView img;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.layout_preview, parent, false);
+            img = (ImageView) convertView.findViewById(R.id.imagePreview);
+            convertView.setTag(img);
+        } else {
+            img = (ImageView) convertView.getTag();
         }
-        img = (ImageView) convertView.findViewById(R.id.imagePreview);
         Picasso.with(this.context).load("https://image.tmdb.org/t/p/w500" +
                 getItem(position).getPosterPath()).
                 into(img);

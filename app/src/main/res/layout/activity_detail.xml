@@ -16,9 +16,9 @@
     <ImageView
         android:id="@+id/poster"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_marginTop="0dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -54,7 +54,8 @@
                         android:gravity="bottom"
                         android:textSize="17sp"
                         android:layout_weight="0.8"
-                        android:text="@string/title_def"/>
+                        android:text="@string/title_def"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/tglRilis"
@@ -63,7 +64,8 @@
                         android:gravity="bottom"
                         android:textSize="17sp"
                         android:layout_weight="0.2"
-                        android:text="@string/released_def"/>
+                        android:text="@string/released_def"
+                        android:visibility="gone"/>
                 </LinearLayout>
             </LinearLayout>
 

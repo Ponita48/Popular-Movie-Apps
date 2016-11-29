@@ -2,8 +2,8 @@
     <string name="app_name">Popular Movie Apps</string>
     <string name="api_key">69292009f880792c30f93ceb1ae0e166</string>
 
-    <string name="title_def">Title     :</string>
-    <string name="released_def">Released  :</string>
+    <string name="title_def">Title :</string>
+    <string name="released_def">Released :</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_sort">Sort</string>
 </resources>

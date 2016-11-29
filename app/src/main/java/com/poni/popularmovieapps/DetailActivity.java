@@ -51,6 +51,8 @@ public class DetailActivity extends AppCompatActivity {
                     rilis.setText(rilis.getText() + " " + body.getReleaseDate());
                     sinopsis.setText(body.getOverview());
                     loading.setVisibility(View.GONE);
+                    judul.setVisibility(View.VISIBLE);
+                    rilis.setVisibility(View.VISIBLE);
                 } else {
                     Toast.makeText(DetailActivity.this, "Connection Timed Out", Toast.LENGTH_SHORT).show();
                 }

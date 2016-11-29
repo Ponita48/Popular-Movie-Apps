@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public interface APIService {
     @GET("discover/movie?api_key=69292009f880792c30f93ceb1ae0e166")
-    Call<DiscoverModel> getMovies(@Query("page") int page);
+    Call<DiscoverModel> getMovies(@Query("page") int page, @Query("sort_by") String sort);
 
     @GET("movie/{id}?api_key=69292009f880792c30f93ceb1ae0e166")
     Call<DetailModel> getDetail(@Path("id") Integer id);

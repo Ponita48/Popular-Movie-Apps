@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/material_grey_900</item>
+        <item name="colorPrimaryDark">@color/material_grey_100</item>
+        <item name="colorAccent">@color/material_grey_300</item>
     </style>
 
     <style name="GenericProgressBackground" parent="android:Theme">
