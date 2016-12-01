@@ -53,7 +53,7 @@
                         android:layout_height="0dp"
                         android:gravity="bottom"
                         android:textSize="17sp"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:text="@string/title_def"
                         android:visibility="gone"/>
 
@@ -63,8 +63,18 @@
                         android:layout_height="0dp"
                         android:gravity="bottom"
                         android:textSize="17sp"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.1"
                         android:text="@string/released_def"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="bottom"
+                        android:textSize="17sp"
+                        android:layout_weight="0.1"
+                        android:text="@string/rating_def"
+                        android:id="@+id/rating"
                         android:visibility="gone"/>
                 </LinearLayout>
             </LinearLayout>

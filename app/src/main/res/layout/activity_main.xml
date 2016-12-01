@@ -31,13 +31,11 @@
         android:visibility="invisible"
         android:layout_gravity="center"/>
 
-    <GridView
-        android:id="@+id/previewLayout"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="1dp"
-        android:numColumns="2"
-        android:verticalSpacing="1dp" />
+        android:id="@+id/recyclerPreview">
 
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

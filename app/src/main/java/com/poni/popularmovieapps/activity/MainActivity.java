@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.poni.popularmovieapps.adapter.PreviewAdapter;
 import com.poni.popularmovieapps.R;
+import com.poni.popularmovieapps.adapter.RecyclerPreviewAdapter;
 import com.poni.popularmovieapps.api.APIService;
 import com.poni.popularmovieapps.model.DiscoverModel;
 import com.poni.popularmovieapps.model.Result;
@@ -29,19 +32,22 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GridView gv;
+    private RecyclerView rv;
     private ProgressBar pb;
     private TextView textMain;
     private Button refresh;
     private String sort = "";
+
+    private GridLayoutManager glayout;
+    private RecyclerPreviewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        rv = (RecyclerView) findViewById(R.id.recyclerPreview);
         pb = (ProgressBar) findViewById(R.id.progressBar);
-        gv = (GridView) findViewById(R.id.previewLayout);
         textMain = (TextView) findViewById(R.id.textMain);
         refresh = (Button) findViewById(R.id.buttonRefresh);
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -63,16 +69,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sort:
-                CharSequence colors[] = new CharSequence[] {
-                        "Popularity Ascending",
-                        "Popularity Descending",
-                        "Release Date Ascending",
-                        "Release Date Descending"
+                CharSequence sorting[] = new CharSequence[] {
+                        "Least Popular",
+                        "Most Popular",
+                        "Least Recent",
+                        "Most Recent"
                 };
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Sort By");
-                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                builder.setItems(sorting, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
@@ -97,14 +103,18 @@ public class MainActivity extends AppCompatActivity {
                 });
                 builder.show();
                 return true;
+            case R.id.action_search:
+                Intent in = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(in);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
     public void connect(String sort) {
+        rv.setVisibility(View.INVISIBLE);
         pb.setVisibility(View.VISIBLE);
-        gv.setVisibility(View.INVISIBLE);
         refresh.setVisibility(View.INVISIBLE);
         textMain.setVisibility(View.INVISIBLE);
         Call<DiscoverModel> call = APIService.service.getMovies(1, sort);
@@ -113,18 +123,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<DiscoverModel> call, Response<DiscoverModel> response) {
                 if (response.isSuccessful()) {
                     final List<Result> list = response.body().getResults();
-                    PreviewAdapter adapter = new PreviewAdapter(MainActivity.this, list);
-                    gv.setAdapter(adapter);
-                    gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Integer movieId = list.get(position).getId();
-                            Intent in = new Intent(MainActivity.this, DetailActivity.class);
-                            in.putExtra("id", movieId);
-                            startActivity(in);
-                        }
-                    });
-                    gv.setVisibility(View.VISIBLE);
+                    glayout = new GridLayoutManager(MainActivity.this, 2);
+                    adapter = new RecyclerPreviewAdapter(MainActivity.this, list);
+
+                    rv.setLayoutManager(glayout);
+                    rv.setAdapter(adapter);
+                    rv.setVisibility(View.VISIBLE);
                     pb.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(MainActivity.this, "Connection Timed Out", Toast.LENGTH_SHORT).show();

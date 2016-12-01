@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.poni.popularmovieapps.model.DetailModel;
 import com.poni.popularmovieapps.model.DiscoverModel;
+import com.poni.popularmovieapps.model.SearchModel;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -18,6 +19,12 @@ public interface APIService {
 
     @GET("movie/{id}?api_key=69292009f880792c30f93ceb1ae0e166")
     Call<DetailModel> getDetail(@Path("id") Integer id);
+
+    @GET("search/keyword?api_key=69292009f880792c30f93ceb1ae0e166")
+    Call<SearchModel> getKeywordSearch(@Query("query") String query);
+
+    @GET("search/movie?api_key=69292009f880792c30f93ceb1ae0e166")
+    Call<DiscoverModel> getMovieSearch(@Query("query") String query);
 
     Gson gson = new GsonBuilder().create();
 

@@ -4,6 +4,10 @@
 
     <string name="title_def">Title :</string>
     <string name="released_def">Released :</string>
+    <string name="rating_def">Rating :</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="keyword">Keyword</string>
 
     <string name="action_sort">Sort</string>
+    <string name="action_search">Search</string>
 </resources>

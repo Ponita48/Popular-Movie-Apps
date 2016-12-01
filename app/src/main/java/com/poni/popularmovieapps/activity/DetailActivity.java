@@ -31,6 +31,7 @@ public class DetailActivity extends AppCompatActivity {
         final TextView judul = (TextView) findViewById(R.id.judulDetail);
         final TextView rilis = (TextView) findViewById(R.id.tglRilis);
         final TextView sinopsis = (TextView) findViewById(R.id.sinopsisDetail);
+        final TextView rating = (TextView) findViewById(R.id.rating);
         final ProgressBar loading = (ProgressBar) findViewById(R.id.loadingDetail);
 
         Bundle bundle = getIntent().getExtras();
@@ -50,10 +51,12 @@ public class DetailActivity extends AppCompatActivity {
                             into(foto);
                     judul.setText(judul.getText() + " " + body.getTitle());
                     rilis.setText(rilis.getText() + " " + body.getReleaseDate());
+                    rating.setText(rating.getText() + " " + body.getVoteAverage());
                     sinopsis.setText(body.getOverview());
                     loading.setVisibility(View.GONE);
                     judul.setVisibility(View.VISIBLE);
                     rilis.setVisibility(View.VISIBLE);
+                    rating.setVisibility(View.VISIBLE);
                 } else {
                     Toast.makeText(DetailActivity.this, "Connection Timed Out", Toast.LENGTH_SHORT).show();
                 }
