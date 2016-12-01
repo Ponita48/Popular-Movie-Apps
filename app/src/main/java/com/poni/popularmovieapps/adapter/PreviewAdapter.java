@@ -1,4 +1,4 @@
-package com.poni.popularmovieapps;
+package com.poni.popularmovieapps.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.poni.popularmovieapps.R;
 import com.poni.popularmovieapps.model.Result;
 import com.squareup.picasso.Picasso;
 

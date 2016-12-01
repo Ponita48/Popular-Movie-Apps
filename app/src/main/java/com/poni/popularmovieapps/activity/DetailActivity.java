@@ -1,4 +1,4 @@
-package com.poni.popularmovieapps;
+package com.poni.popularmovieapps.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.poni.popularmovieapps.R;
 import com.poni.popularmovieapps.api.APIService;
 import com.poni.popularmovieapps.model.DetailModel;
 import com.squareup.picasso.Picasso;

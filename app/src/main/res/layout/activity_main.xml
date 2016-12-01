@@ -4,17 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.poni.popularmovieapps.MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <ProgressBar
+        android:id="@+id/progressBar"
         style="@style/GenericProgressIndicator"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/progressBar"
         android:layout_gravity="center_horizontal|top"
-        android:visibility="visible"/>
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="@dimen/activity_horizontal_margin"/>
+
+    <Button
+        android:id="@+id/buttonRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="center"/>
 
     <GridView
         android:id="@+id/previewLayout"
