@@ -2,6 +2,7 @@ package com.poni.popularmovieapps.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.poni.popularmovieapps.model.CurrencyModel;
 import com.poni.popularmovieapps.model.DetailModel;
 import com.poni.popularmovieapps.model.DiscoverModel;
 import com.poni.popularmovieapps.model.SearchModel;
@@ -26,6 +27,10 @@ public interface APIService {
     @GET("search/movie?api_key=69292009f880792c30f93ceb1ae0e166")
     Call<DiscoverModel> getMovieSearch(@Query("query") String query);
 
+    //Currency
+    @GET("latest?base=USD&symbols=IDR")
+    Call<CurrencyModel> getCurrency();
+
     Gson gson = new GsonBuilder().create();
 
     String baseUrl = "https://api.themoviedb.org/3/";
@@ -34,6 +39,13 @@ public interface APIService {
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
+
+    Retrofit currency = new Retrofit.Builder()
+            .baseUrl("http://api.fixer.io/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
+
+    APIService curr = APIService.currency.create(APIService.class);
 
     APIService service = APIService.retrofit.create(APIService.class);
 }
